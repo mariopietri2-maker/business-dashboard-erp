@@ -4,35 +4,51 @@
 
 **All the power of an ERP. Without the complexity.**
 
-Invoices · Delivery Notes · Expenses · Receipts · POS · Taxes · EFKA · AI Assistant · Accountant access
+---
 
-Direct AADE / myDATA integration · Greek-language AI · Ready for B2B e-invoicing (Oct 2026)
+## 🌐 Live website
+
+**GitHub Pages URL (after enabling Pages once):**  
+👉 **https://mariopietri2-maker.github.io/business-dashboard-erp/**
+
+### Enable hosting (one-time, ~30 seconds)
+
+1. Open: https://github.com/mariopietri2-maker/business-dashboard-erp/settings/pages  
+2. Under **Build and deployment → Source**, select **GitHub Actions**  
+3. Save  
+4. Go to **Actions** tab → open the latest **Deploy to GitHub Pages** run → wait until green  
+
+Your site will be public at the URL above.
+
+### Or deploy to Vercel (custom domain, free)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/mariopietri2-maker/business-dashboard-erp)
+
+1. Click the button  
+2. Sign in with GitHub  
+3. Deploy — you get a `*.vercel.app` URL in ~1 minute  
+
+(If using Vercel, you can remove `output: "export"` from `next.config.ts` for full server features later.)
 
 ---
 
-## What's included right now
+## What's included
 
 | Feature | Status |
 |---------|--------|
-| Dashboard with KPIs + charts | ✅ Live |
-| Sales list + **New Invoice form** | ✅ Live |
-| AI Assistant (Greek NL simulation) | ✅ Live |
-| Customers CRM | ✅ Live |
-| Expenses | ✅ Live |
-| Products & Services catalog | ✅ Live |
-| Projects | ✅ Live |
-| Cash / Treasury | ✅ Live |
-| Settings | ✅ Live |
-| **Landing page + Pricing** | ✅ Live (`/landing`) |
-| **Mobile responsive sidebar** | ✅ Live |
-| **Prisma schema** (PostgreSQL) | ✅ Ready |
-| Real AADE / myDATA API | 🔜 Next |
-| Real AI backend | 🔜 Next |
-| Auth + multi-tenant | 🔜 Next |
+| Dashboard with KPIs + charts | ✅ |
+| Sales list + New Invoice form | ✅ |
+| AI Assistant (Greek) | ✅ |
+| Customers CRM | ✅ |
+| Expenses / Products / Projects / Cash | ✅ |
+| Landing page + Pricing | ✅ `/landing` |
+| Mobile responsive | ✅ |
+| Static deploy (GitHub Pages) | ✅ |
+| Prisma schema | ✅ Ready |
 
 ---
 
-## Quick Start
+## Local development
 
 ```bash
 git clone https://github.com/mariopietri2-maker/business-dashboard-erp.git
@@ -41,76 +57,10 @@ npm install
 npm run dev
 ```
 
-Open:
-- **App**: http://localhost:3000
-- **Landing / Pricing**: http://localhost:3000/landing
-- **New Invoice**: http://localhost:3000/sales/new
-- **AI Assistant**: http://localhost:3000/ai
-
-### Optional – Database
-
-```bash
-cp .env.example .env
-# Edit DATABASE_URL
-npm run db:generate
-npm run db:push
-```
-
----
-
-## Key Routes
-
-| Path | Description |
-|------|-------------|
-| `/` | Dashboard (KPIs, charts) |
-| `/landing` | Marketing page + pricing |
-| `/sales` | Invoice list |
-| `/sales/new` | **Full invoice creation form** |
-| `/ai` | Greek AI assistant |
-| `/customers` | CRM cards |
-| `/expenses` | Expense list |
-| `/products` | Product/service catalog |
-| `/projects` | Projects with P&L |
-| `/cash` | Cash & bank overview |
-| `/settings` | Company + AADE status |
-
----
-
-## Tech Stack
-
-- **Next.js 15** + React 19 + TypeScript
-- **Tailwind CSS** + dark theme
-- **Recharts** for charts
-- **Prisma** + PostgreSQL schema ready
-- **Lucide** icons
-- Mobile-first responsive layout
-
----
-
-## Prisma Models
-
-`Company` · `User` · `Customer` · `Product` · `Document` · `DocumentLine` · `Project`
-
-Supports all myDATA document types (1.1, 2.1, 9.3, 11.1, 11.2) + payment & document statuses.
-
----
-
-## Roadmap
-
-### Done
-- [x] Full UI scaffold matching Kiros screenshots
-- [x] Invoice creation form with line items & VAT calc
-- [x] AI chat simulation
-- [x] Landing + pricing page
-- [x] Mobile hamburger navigation
-- [x] Prisma schema
-
-### Next
-- [ ] Wire Prisma + real CRUD APIs
-- [ ] Real AI (Grok / OpenAI) for natural language → document
-- [ ] AADE myDATA integration
-- [ ] Auth (NextAuth / Clerk)
-- [ ] Deploy to Vercel
+- App: http://localhost:3000  
+- Landing: http://localhost:3000/landing  
+- New invoice: http://localhost:3000/sales/new  
+- AI: http://localhost:3000/ai  
 
 ---
 
@@ -118,7 +68,4 @@ Supports all myDATA document types (1.1, 2.1, 9.3, 11.1, 11.2) + payment & docum
 
 MIT
 
----
-
-**Inspired by the excellent work of the kiros.gr team (NOVUS DIGITAL).**  
-This is an independent open-source recreation / learning project.
+Inspired by kiros.gr (NOVUS DIGITAL) — independent open-source recreation.
