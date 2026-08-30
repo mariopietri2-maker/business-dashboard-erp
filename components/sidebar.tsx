@@ -31,11 +31,16 @@ const navItems = [
   { href: "/settings", label: "Ρυθμίσεις", icon: Settings },
 ];
 
+function normalizePath(path: string) {
+  if (!path) return "/";
+  const trimmed = path.replace(/\/$/, "");
+  return trimmed === "" ? "/" : trimmed;
+}
+
 export function Sidebar() {
-  const pathname = usePathname();
+  const pathname = normalizePath(usePathname() || "/");
   const [open, setOpen] = useState(false);
 
-  // Hide sidebar completely on landing page
   if (pathname === "/landing") return null;
 
   const NavContent = () => (
@@ -57,9 +62,10 @@ export function Sidebar() {
 
       <nav className="flex-1 space-y-1 overflow-y-auto p-4">
         {navItems.map((item) => {
+          const href = normalizePath(item.href);
           const isActive =
-            pathname === item.href ||
-            (item.href !== "/" && pathname.startsWith(item.href));
+            pathname === href ||
+            (href !== "/" && pathname.startsWith(href));
           const Icon = item.icon;
           return (
             <Link
@@ -91,7 +97,6 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Mobile top bar */}
       <div className="fixed top-0 left-0 right-0 z-40 flex h-14 items-center gap-3 border-b border-slate-800 bg-slate-950 px-4 md:hidden">
         <button
           onClick={() => setOpen(true)}
@@ -107,7 +112,6 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* Mobile overlay */}
       {open && (
         <div
           className="fixed inset-0 z-40 bg-black/60 md:hidden"
@@ -115,7 +119,6 @@ export function Sidebar() {
         />
       )}
 
-      {/* Mobile drawer */}
       <aside
         className={cn(
           "fixed inset-y-0 left-0 z-50 flex w-64 flex-col bg-slate-950 text-slate-100 transition-transform duration-200 md:hidden",
@@ -125,7 +128,6 @@ export function Sidebar() {
         <NavContent />
       </aside>
 
-      {/* Desktop sidebar */}
       <aside className="hidden md:flex h-screen w-64 flex-col border-r border-slate-800 bg-slate-950 text-slate-100 shrink-0">
         <NavContent />
       </aside>
