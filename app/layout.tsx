@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Sidebar } from "@/components/sidebar";
+import { AppShell } from "@/components/app-shell";
 
 const inter = Inter({ subsets: ["latin", "greek"] });
 
 export const metadata: Metadata = {
   title: "kiros.gr – Διαχείριση Επιχείρησης",
-  description: "Όλη η δύναμη ενός ERP. Χωρίς την πολυπλοκότητά του.",
+  description:
+    "Όλη η δύναμη ενός ERP. Χωρίς την πολυπλοκότητά του. Τιμολόγηση και myDATA για ελληνικές επιχειρήσεις.",
+  openGraph: {
+    title: "kiros.gr – Διαχείριση Επιχείρησης",
+    description: "Όλη η δύναμη ενός ERP. Χωρίς την πολυπλοκότητά του.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -18,12 +24,7 @@ export default function RootLayout({
   return (
     <html lang="el" className="dark">
       <body className={inter.className}>
-        <div className="flex h-screen overflow-hidden">
-          <Sidebar />
-          <main className="flex-1 overflow-y-auto bg-slate-900 pt-14 md:pt-0">
-            {children}
-          </main>
-        </div>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );
