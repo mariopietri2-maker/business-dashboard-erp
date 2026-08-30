@@ -3,12 +3,15 @@
 import { usePathname } from "next/navigation";
 import { Sidebar } from "@/components/sidebar";
 
+const PUBLIC_PATHS = ["/landing"];
+
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isLanding = pathname === "/landing" || pathname === "/";
+  const isPublic = PUBLIC_PATHS.some(
+    (p) => pathname === p || pathname.startsWith(p + "/")
+  );
 
-  // Public marketing pages: no sidebar
-  if (isLanding && pathname === "/landing") {
+  if (isPublic) {
     return <div className="min-h-screen bg-slate-950">{children}</div>;
   }
 
